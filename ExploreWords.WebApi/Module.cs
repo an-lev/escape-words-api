@@ -1,4 +1,6 @@
-﻿namespace ExploreWords.WebApi
+﻿using System.Collections.ObjectModel;
+
+namespace ExploreWords.WebApi
 {
 	public class Module
 	{
@@ -6,6 +8,6 @@
 
 		public string Name { get; set; }
 
-		public ICollection<Word> Words { get; set; }
+		public ICollection<Word> Words { get; set; } = new Collection<Word>();
 	}
 }

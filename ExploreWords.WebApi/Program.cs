@@ -7,10 +7,10 @@ namespace ExploreWords.WebApi
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+			builder.Configuration.AddJsonFile("appsettings.local.json", optional: true, reloadOnChange: true);
+            // Add services to the container.
 
-			// Add services to the container.
-
-			builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
+            builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
 			{
 				policy.WithOrigins("http://localhost:8080")
 									.AllowAnyHeader()
