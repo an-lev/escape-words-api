@@ -38,6 +38,19 @@ namespace ExploreWords.WebApi.Controllers
             return wordEntity;
         }
 
+        [HttpDelete("{wordId}")]
+        public async Task<IActionResult> DeleteWord([FromRoute] Guid wordId)
+        {
+            Word wordToDelete = exploreWordsDbContext.Words.Find(wordId);
+            if (wordToDelete == null)
+                return NoContent();
+
+            exploreWordsDbContext.Words.Remove(wordToDelete);
+            exploreWordsDbContext.SaveChanges();
+
+            return NoContent();
+        }
+
     }
 
     public class CreateWordVm
